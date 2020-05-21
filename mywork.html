@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Jacob Kryk Cinematography</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Domine&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<style>
+	* {
+		box-sizing: border-box;
+	}
+	body {
+		background-color: rgb(80,20,20);
+		color:white; 
+		font-family: 'Domine', serif;
+		margin: 0;
+	}
+	ul {
+		list-style-type: none;
+		text-decoratoin: none;
+		margin: 0;
+		padding: 0;
+		margin-bottom: 25px;
+		margin-left: 50px;
+	}
+	li {
+		display: inline;
+		margin-right: 30px;
+	}
+	a.click:link {
+		color: white;
+		text-decoration: none;
+	}
+	a.click:hover {
+		color: white;
+		text-decoration: none;
+	}
+	a.click:active {
+		color: white;
+		text-decoration: none;
+	}
+	a.click:visited {
+		color: white;
+		text-decoration: none;
+	}
+	.row {
+		display: flex;
+		flex-align: baseline;
+		align-items: center;
+		flex-wrap: nowrap;
+		border: white;
+	}
+	.title {
+		text-align: center;
+		padding: 20px;
+	}
+	.row {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 0px;
+	}
+	.column {
+		flex: 50%;
+		max-width: 50%;
+	}
+	.column img {
+		vertical-align: middle;
+	}
+	@media (max-width: 800px) {
+		.column {
+			flex: 100%;
+			max-width: 100%;
+		}
+	}
+	#fader {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 999999;
+		pointer-events: none;
+		background: black;
+		animation-duration: 300ms;
+		animation-timing-function: ease-in-out;
+	}
+	@keyframes fade-out {
+		from { opacity: 1}
+		to {opacity: 0}
+	}
+	@keyframes fade-in {
+		from { opacity: 0}
+		to {opacity: 1}
+	}
+	#fader.fade-out {
+		opacity: 0;
+		animation-name: fade-out;
+	}
+	#fader.fade-in {
+		opacity: 1;
+		animation-name: fade-in;
+	}
+	.textnorm {
+		font-family: 'Montserrat', sans-serif;
+	}
+</style>
+<script>
+	function fadeInPage() {
+		if (!window.AnimationEvent) { return; }
+		var fader = document.getElementById('fader');
+		fader.classList.add('fade-out');
+}
+	document.addEventListener('DOMContentLoaded', function() {
+		if (!window.AnimationEvent) { return; }
+		var anchors = document.getElementByTagName('a');
+		for (var idx=0; idx<anchors.length; idx+=1) {
+			if (anchors[idx].hostname !== window.location.hostname ||
+			anchors[idx].pathname === window.location.pathname) {
+			continue;
+		}
+		 anchors[idx].addEventListener('click', function(event) {
+			var fader = document.getElementById('fader'),
+				anchor = event.currentTarget;
+			var listener = function () {
+				window.location= anchor.href;
+				fader.removeEventListener('animationend', listener);
+			};
+			fader.addEventListener('animationend', listener);
+			event.preventDefault();
+			fader.classList.add('fade-in');
+		});
+	}
+});
+window.addEventListener('pageshow', function (event) {
+	if (!event.persisted) {
+	return;
+	}
+	var fader = document.getElementById('fader');
+	fader.classList.remove('fade-in');
+});
+</script>
+</head>
+
+<body>
+<svg id="fader"></svg>
+	<script>
+		fadeInPage();
+	</script>
+<div class="title">
+<h1>My Previous Projects</h1>
+<p class="textnorm">These screenshots are from short films, photography<br>and miscellaneous work</p>
+</div>
+<nav>
+	<ul>
+		<li><a href="websiteattempt1.html" class="click">HOME</a></li>
+		<li><a href="aboutme.html" class="click">ABOUT ME</a></li>
+		<li><a href="contactme.html" class="click">CONTACT ME</a></li>
+	</ul>
+</nav>
+<iframe width="1920" height="1080" src="https://www.youtube.com/embed/DL7S1e2db7w?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!-- gallery -->
+<div class="row">
+	<div class="column">
+		<img src="portfolio/trees.jpg" style="width:100%" alt="boy meets younger boy">
+		<img src="portfolio/treethrutree.jpg" style="width:100%" alt="tree through a tree">
+		<img src="portfolio/bird.jpg" style="width:100%" alt="bird on a mountain">
+		<img src="portfolio/treeforest.jpg" style="width:100%" alt="forest tree">
+		<img src="portfolio/forestwalk.jpg" style="width:100%" alt="walking through a forest towards a lake">
+		<img src="portfolio/cctv.jpg" style="width:100%" alt="cctv camera">
+		<img src="portfolio/kitchenjar.jpg" style="width:100%" alt="kitchen jar">
+		<img src="portfolio/smokebreak.jpg" style="width:100%" alt="man holding a cigarette">
+		<img src="portfolio/gasmask.jpg" style="width:100%" alt="man wearing a gasmask">
+		<img src="portfolio/triangles.jpg" style="width:100%" alt="trippy triangles">
+	</div>
+	<div class="column">
+		<img src="portfolio/handonglass.jpg" style="width:100%" alt="girl with hand on shower door">
+		<img src="portfolio/lonelypeg.jpg" style="width:100%" alt="blue peg all alone">
+		<img src="portfolio/moon.jpg" style="width:100%" alt="moon">
+		<img src="portfolio/sakura.jpg" style="width:100%" alt="cherry blossom tree">
+		<img src="portfolio/weirdbonsai.jpg" style="width:100%" alt="weirdly shaped bonsai">
+		<img src="portfolio/smoke.jpg" style="width:100%" alt="boy smoking">
+		<img src="portfolio/pub.jpg" style="width:100%" alt="man sitting in a pub">
+		<img src="portfolio/walksuit.jpg" style="width:100%" alt="man walking through arches">
+		<img src="portfolio/red.jpg" style="width:100%" alt="woman shot by man">
+		<img src="portfolio/podcast.jpg" style="width:100%" alt="man and woman on a podcast">
+	</div>
+</div>
+<div style="text-align: center; margin-top: 15px";>
+	<ul>
+		<li><a href="websiteattempt1.html" class="click">HOME</a></li>
+		<li><a href="aboutme.html" class="click">ABOUT ME</a></li>
+		<li><a href="contactme.html" class="click">CONTACT ME</a></li>
+		<li><a href="mywork.html" class="click">BACK TO TOP</a></li>
+	</ul>
+</div>
+</body>
+</html>
+</!DOCTYPE html>

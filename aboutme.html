@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Jacob Kryk Cinematography</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Domine&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<style>
+	body {
+		background-color: rgb(80,20,20);
+		color: white;
+		font-family: 'Domine', serif;
+	}
+	ul {
+		list-style-type: none;
+		text-decoratoin: none;
+		margin: 0;
+		padding: 0;
+		margin-bottom: 25px;
+		margin-top: 25px;
+		margin-left: 25px;
+	}
+	li {
+		display: inline;
+		margin-right: 30px;
+	}
+	a.click:link {
+		color: white;
+		text-decoration: none;
+	}
+	a.click:hover {
+		color: white;
+		text-decoration: none;
+	}
+	a.click:active {
+		color: white;
+		text-decoration: none;
+	}
+	a.click:visited {
+		color: white;
+		text-decoration: none;
+	}
+	#fader {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 999999;
+		pointer-events: none;
+		background: black;
+		animation-duration: 300ms;
+		animation-timing-function: ease-in-out;
+	}
+	@keyframes fade-out {
+		from { opacity: 1}
+		to {opacity: 0}
+	}
+	@keyframes fade-in {
+		from { opacity: 0}
+		to {opacity: 1}
+	}
+	#fader.fade-out {
+		opacity: 0;
+		animation-name: fade-out;
+	}
+	#fader.fade-in {
+		opacity: 1;
+		animation-name: fade-in;
+	}
+	.chunk {
+		font-family: "Montserrat", sans-serif;
+		font-size: 18px;
+		margin-left: 15px;
+		margin-right: 15px;
+		text-decoration: none;
+	}
+	.face {
+		max-width: 25%;
+		margin-left: 15px;
+	}
+	h {
+		font-size: 25px;
+		margin-top: 10px;
+	}
+</style>
+<script>
+	function fadeInPage() {
+		if (!window.AnimationEvent) { return; }
+		var fader = document.getElementById('fader');
+		fader.classList.add('fade-out');
+}
+	document.addEventListener('DOMContentLoaded', function() {
+		if (!window.AnimationEvent) { return; }
+		var anchors = document.getElementByTagName('a');
+		for (var idx=0; idx<anchors.length; idx+=1) {
+			if (anchors[idx].hostname !== window.location.hostname ||
+			anchors[idx].pathname === window.location.pathname) {
+			continue;
+		}
+		 anchors[idx].addEventListener('click', function(event) {
+			var fader = document.getElementById('fader'),
+				anchor = event.currentTarget;
+			var listener = function () {
+				window.location= anchor.href;
+				fader.removeEventListener('animationend', listener);
+			};
+			fader.addEventListener('animationend', listener);
+			event.preventDefault();
+			fader.classList.add('fade-in');
+		});
+	}
+});
+window.addEventListener('pageshow', function (event) {
+	if (!event.persisted) {
+	return;
+	}
+	var fader = document.getElementById('fader');
+	fader.classList.remove('fade-in');
+});
+</script>
+</head>
+
+<body>
+<svg id="fader"></svg>
+        <script>
+            fadeInPage();
+        </script>
+<h>About Jacob</h>
+<nav>
+	<ul>
+		<li><a href="websiteattempt1.html" class="click">HOME</a></li>
+		<li><a href="mywork.html" class="click">MY WORK</a></li>
+		<li><a href="contactme.html" class="click">CONTACT ME</a></li>
+	</ul>
+</nav>
+<h>Brief Story<h>
+<div style="max-width:50%; overflow:auto">
+<p class="chunk">
+Jacob is an aspiring cinematographer with an interest in editing. His parents split up when he was young
+but he now lives with his stepdad (who works in architectural visualisation) and mother (who is a
+painter). Jacob was born in Kozienice, Poland in 1999. In 2007 he moved to England and has lived there 
+ever since. After primary education in Barnet and secondary education in Hertfordshire, Jacob took a 
+film production course at the University of Winchester in 2017. From September 2020, Jacob intends on
+doing a masters in digital media practice at the same University.
+</p>
+</div>
+<h>Interests</h>
+<div style="max-width:50%; overflow:auto">
+<p class="chunk">
+Jacob has hobbies in a wide range of fields. He very recently learned HTML and basic CSS and JavaScript
+to code this website as part of his film production course; he will continue learning how to code.
+He has been teaching himself to play the piano for over 12 years, he also started learning the guitar
+4 years ago. He has dabbled in a number of activities over the years including collage drawing,
+stop-motion animation, live-streaming, audio engineering and many more.
+He has learned German to a B2 CEFR level, Japanese to a B1 level and speaks Polish and English natively.
+He began learning Macedonian in 2020 to talk to friends abroad.
+Jacob interests himself in photography, design, colour theory and almost everything in the realm of
+interesting visual experiences.
+</p>
+</div>
+<img class="face" src="jacobface.jpg" alt="Jacob in a pub" title="A Photo of Jacob">
+</body>
+</html>
+</!DOCTYPE html>
